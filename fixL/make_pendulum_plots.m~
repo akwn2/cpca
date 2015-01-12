@@ -1,0 +1,68 @@
+function failed = make_pendulum_plots()
+%UNTITLED2 Summary of this function goes here
+%   Detailed explanation goes here
+
+    truA = [1, 0, 0, 0;
+            0, 0, 0, 0;
+            1, 1, 0, 0;
+            0, 0, 0, 0;
+            1, 1, 1, 0;
+            0, 0, 0, 0;
+            1, 1, 1, 1;
+            0, 0, 0, 0];
+
+    truB = [0, 0, 0, 0;
+            1, 0, 0, 0;
+            0, 0, 0, 0;
+            1, 1, 0, 0;
+            0, 0, 0, 0;
+            1, 1, 1, 0;
+            0, 0, 0, 0;
+            1, 1, 1, 1];
+
+    truA = truA .* 5;
+    truB = truB .* 5;
+     
+    for ii = 1:3
+        figure
+%         suptitle(strcat('Pendulum: ', num2str(ii)));
+        for jj = 1:4
+            load(strcat(num2str(ii),'p_c_out',num2str(jj),'.mat'));
+            
+            subplot(4, 4, 4 * jj - 3)
+            imagesc(A)
+            title('Learned A');
+
+            subplot(4, 4, 4 * jj - 2)
+            imagesc(truA(1:2 * ii, 1:jj))
+            title('True A');
+
+            subplot(4, 4, 4 * jj - 1)
+            imagesc(B)
+            title('Learned B');
+
+            subplot(4, 4, 4 * jj)
+            imagesc(truB(1:2 * ii, 1:jj))
+            title('True B');
+            
+            clear A;
+            clear B;
+        end
+        axis tight
+    end
+    
+    figure
+    score = zeros(3,4);
+    for ii = 1:3
+        for jj = 1:4
+            load(strcat(num2str(ii),'p_c_out',num2str(jj),'.mat'));
+
+            score(ii, jj) = run_stats{3}(end);
+        end
+        subplot(3,1,ii)
+        title(strcat('Learned A');
+        bar(score(ii,:))
+    end
+failed = 0;
+end
+

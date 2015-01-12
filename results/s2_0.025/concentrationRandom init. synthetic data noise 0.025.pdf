@@ -1,0 +1,2018 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%Creator: MATLAB, The MathWorks, Inc. Version 8.2.0.701 (R2013b). Operating System: Linux 3.13.0-39-generic #66-Ubuntu SMP Tue Oct 28 13:30:27 UTC 2014 x86_64.
+%%Title: ./figs/concentrationRandom init. synthetic data noise 0.025.pdf
+%%CreationDate: 12/02/2014  21:56:14
+%%DocumentNeededFonts: Helvetica
+%%DocumentProcessColors: Cyan Magenta Yellow Black
+%%LanguageLevel: 2
+%%Pages: 1
+%%BoundingBox:    92   266   501   574
+%%EndComments
+
+%%BeginProlog
+% MathWorks dictionary
+/MathWorks 160 dict begin
+% definition operators
+/bdef {bind def} bind def
+/ldef {load def} bind def
+/xdef {exch def} bdef
+/xstore {exch store} bdef
+% operator abbreviations
+/c  /clip ldef
+/cc /concat ldef
+/cp /closepath ldef
+/gr /grestore ldef
+/gs /gsave ldef
+/mt /moveto ldef
+/np /newpath ldef
+/cm /currentmatrix ldef
+/sm /setmatrix ldef
+/rm /rmoveto ldef
+/rl /rlineto ldef
+/s {show newpath} bdef
+/sc {setcmykcolor} bdef
+/sr /setrgbcolor ldef
+/sg /setgray ldef
+/w /setlinewidth ldef
+/j /setlinejoin ldef
+/cap /setlinecap ldef
+/rc {rectclip} bdef
+/rf {rectfill} bdef
+% page state control
+/pgsv () def
+/bpage {/pgsv save def} bdef
+/epage {pgsv restore} bdef
+/bplot /gsave ldef
+/eplot {stroke grestore} bdef
+% orientation switch
+/portraitMode 0 def /landscapeMode 1 def /rotateMode 2 def
+% coordinate system mappings
+/dpi2point 0 def
+% font control
+/FontSize 0 def
+/FMS {/FontSize xstore findfont [FontSize 0 0 FontSize neg 0 0]
+  makefont setfont} bdef
+/reencode {exch dup where {pop load} {pop StandardEncoding} ifelse
+  exch dup 3 1 roll findfont dup length dict begin
+  { 1 index /FID ne {def}{pop pop} ifelse } forall
+  /Encoding exch def currentdict end definefont pop} bdef
+/isroman {findfont /CharStrings get /Agrave known} bdef
+/FMSR {3 1 roll 1 index dup isroman {reencode} {pop pop} ifelse
+  exch FMS} bdef
+/csm {1 dpi2point div -1 dpi2point div scale neg translate
+ dup landscapeMode eq {pop -90 rotate}
+  {rotateMode eq {90 rotate} if} ifelse} bdef
+% line types: solid, dotted, dashed, dotdash
+/SO { [] 0 setdash } bdef
+/DO { [.5 dpi2point mul 4 dpi2point mul] 0 setdash } bdef
+/DA { [6 dpi2point mul] 0 setdash } bdef
+/DD { [.5 dpi2point mul 4 dpi2point mul 6 dpi2point mul 4
+  dpi2point mul] 0 setdash } bdef
+% macros for lines and objects
+/L {lineto stroke} bdef
+/MP {3 1 roll moveto 1 sub {rlineto} repeat} bdef
+/AP {{rlineto} repeat} bdef
+/PDlw -1 def
+/W {/PDlw currentlinewidth def setlinewidth} def
+/PP {closepath eofill} bdef
+/DP {closepath stroke} bdef
+/MR {4 -2 roll moveto dup  0 exch rlineto exch 0 rlineto
+  neg 0 exch rlineto closepath} bdef
+/FR {MR stroke} bdef
+/PR {MR fill} bdef
+/L1i {{currentfile picstr readhexstring pop} image} bdef
+/tMatrix matrix def
+/MakeOval {newpath tMatrix currentmatrix pop translate scale
+0 0 1 0 360 arc tMatrix setmatrix} bdef
+/FO {MakeOval stroke} bdef
+/PO {MakeOval fill} bdef
+/PD {currentlinewidth 2 div 0 360 arc fill
+   PDlw -1 eq not {PDlw w /PDlw -1 def} if} def
+/FA {newpath tMatrix currentmatrix pop translate scale
+  0 0 1 5 -2 roll arc tMatrix setmatrix stroke} bdef
+/PA {newpath tMatrix currentmatrix pop	translate 0 0 moveto scale
+  0 0 1 5 -2 roll arc closepath tMatrix setmatrix fill} bdef
+/FAn {newpath tMatrix currentmatrix pop translate scale
+  0 0 1 5 -2 roll arcn tMatrix setmatrix stroke} bdef
+/PAn {newpath tMatrix currentmatrix pop translate 0 0 moveto scale
+  0 0 1 5 -2 roll arcn closepath tMatrix setmatrix fill} bdef
+/vradius 0 def /hradius 0 def /lry 0 def
+/lrx 0 def /uly 0 def /ulx 0 def /rad 0 def
+/MRR {/vradius xdef /hradius xdef /lry xdef /lrx xdef /uly xdef
+  /ulx xdef newpath tMatrix currentmatrix pop ulx hradius add uly
+  vradius add translate hradius vradius scale 0 0 1 180 270 arc 
+  tMatrix setmatrix lrx hradius sub uly vradius add translate
+  hradius vradius scale 0 0 1 270 360 arc tMatrix setmatrix
+  lrx hradius sub lry vradius sub translate hradius vradius scale
+  0 0 1 0 90 arc tMatrix setmatrix ulx hradius add lry vradius sub
+  translate hradius vradius scale 0 0 1 90 180 arc tMatrix setmatrix
+  closepath} bdef
+/FRR {MRR stroke } bdef
+/PRR {MRR fill } bdef
+/MlrRR {/lry xdef /lrx xdef /uly xdef /ulx xdef /rad lry uly sub 2 div def
+  newpath tMatrix currentmatrix pop ulx rad add uly rad add translate
+  rad rad scale 0 0 1 90 270 arc tMatrix setmatrix lrx rad sub lry rad
+  sub translate rad rad scale 0 0 1 270 90 arc tMatrix setmatrix
+  closepath} bdef
+/FlrRR {MlrRR stroke } bdef
+/PlrRR {MlrRR fill } bdef
+/MtbRR {/lry xdef /lrx xdef /uly xdef /ulx xdef /rad lrx ulx sub 2 div def
+  newpath tMatrix currentmatrix pop ulx rad add uly rad add translate
+  rad rad scale 0 0 1 180 360 arc tMatrix setmatrix lrx rad sub lry rad
+  sub translate rad rad scale 0 0 1 0 180 arc tMatrix setmatrix
+  closepath} bdef
+/FtbRR {MtbRR stroke } bdef
+/PtbRR {MtbRR fill } bdef
+/stri 6 array def /dtri 6 array def
+/smat 6 array def /dmat 6 array def
+/tmat1 6 array def /tmat2 6 array def /dif 3 array def
+/asub {/ind2 exch def /ind1 exch def dup dup
+  ind1 get exch ind2 get sub exch } bdef
+/tri_to_matrix {
+  2 0 asub 3 1 asub 4 0 asub 5 1 asub
+  dup 0 get exch 1 get 7 -1 roll astore } bdef
+/compute_transform {
+  dmat dtri tri_to_matrix tmat1 invertmatrix 
+  smat stri tri_to_matrix tmat2 concatmatrix } bdef
+/ds {stri astore pop} bdef
+/dt {dtri astore pop} bdef
+/db {2 copy /cols xdef /rows xdef mul dup 3 mul string
+  currentfile 
+  3 index 0 eq {/ASCIIHexDecode filter}
+  {/ASCII85Decode filter 3 index 2 eq {/RunLengthDecode filter} if }
+  ifelse exch readstring pop
+  dup 0 3 index getinterval /rbmap xdef
+  dup 2 index dup getinterval /gbmap xdef
+  1 index dup 2 mul exch getinterval /bbmap xdef pop pop}bdef
+/it {gs np dtri aload pop moveto lineto lineto cp c
+  cols rows 8 compute_transform 
+  rbmap gbmap bbmap true 3 colorimage gr}bdef
+/il {newpath moveto lineto stroke}bdef
+currentdict end def
+%%EndProlog
+
+%%BeginSetup
+MathWorks begin
+
+0 cap
+
+end
+%%EndSetup
+
+%%Page: 1 1
+%%BeginPageSetup
+%%PageBoundingBox:    92   266   501   574
+MathWorks begin
+bpage
+%%EndPageSetup
+
+%%BeginObject: obj1
+bplot
+
+/dpi2point 12 def
+portraitMode 1104 6888 csm
+
+    0     0  4916  3688 rc
+85 dict begin %Colortable dictionary
+/c0 { 0.000000 0.000000 0.000000 sr} bdef
+/c1 { 1.000000 1.000000 1.000000 sr} bdef
+/c2 { 0.900000 0.000000 0.000000 sr} bdef
+/c3 { 0.000000 0.820000 0.000000 sr} bdef
+/c4 { 0.000000 0.000000 0.800000 sr} bdef
+/c5 { 0.910000 0.820000 0.320000 sr} bdef
+/c6 { 1.000000 0.260000 0.820000 sr} bdef
+/c7 { 0.000000 0.820000 0.820000 sr} bdef
+c0
+1 j
+1 sg
+   0    0 4917 3689 rf
+6 w
+0 582 676 0 0 -582 733 954 4 MP
+PP
+-676 0 0 582 676 0 0 -582 733 954 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+ 733  954 mt 1409  954 L
+ 733  372 mt 1409  372 L
+ 733  954 mt  733  372 L
+1409  954 mt 1409  372 L
+ 733  954 mt 1409  954 L
+ 733  954 mt  733  372 L
+ 733  954 mt  733  947 L
+ 733  372 mt  733  378 L
+%%IncludeResource: font Helvetica
+/Helvetica /ISOLatin1Encoding 120 FMSR
+
+ 700 1099 mt 
+(0) s
+1071  954 mt 1071  947 L
+1071  372 mt 1071  378 L
+1038 1099 mt 
+(2) s
+1409  954 mt 1409  947 L
+1409  372 mt 1409  378 L
+1376 1099 mt 
+(4) s
+ 733  954 mt  739  954 L
+1409  954 mt 1402  954 L
+ 632  998 mt 
+(0) s
+ 733  760 mt  739  760 L
+1409  760 mt 1402  760 L
+ 632  804 mt 
+(1) s
+ 733  566 mt  739  566 L
+1409  566 mt 1402  566 L
+ 632  610 mt 
+(2) s
+ 733  372 mt  739  372 L
+1409  372 mt 1402  372 L
+ 632  416 mt 
+(3) s
+ 733  954 mt 1409  954 L
+ 733  372 mt 1409  372 L
+ 733  954 mt  733  372 L
+1409  954 mt 1409  372 L
+gs 733 372 677 583 rc
+/c8 { 0.000000 0.000000 1.000000 sr} bdef
+c8
+169 0 169 0 169 455 902 499 4 MP stroke
+gr
+
+c8
+gs 829 426 654 602 rc
+ 866  499 mt  938  499 L
+ 902  463 mt  902  535 L
+1035  954 mt 1107  954 L
+1071  918 mt 1071  990 L
+1204  954 mt 1276  954 L
+1240  918 mt 1240  990 L
+1373  954 mt 1445  954 L
+1409  918 mt 1409  990 L
+ 877  474 mt  927  524 L
+ 927  474 mt  877  524 L
+1046  929 mt 1096  979 L
+1096  929 mt 1046  979 L
+1215  929 mt 1265  979 L
+1265  929 mt 1215  979 L
+1384  929 mt 1434  979 L
+1434  929 mt 1384  979 L
+gr
+
+gs 733 372 677 583 rc
+/c9 { 1.000000 0.000000 0.000000 sr} bdef
+c9
+169 194 169 0 169 0 902 760 4 MP stroke
+gr
+
+c9
+gs 829 687 654 341 rc
+ 866  760 mt  938  760 L
+ 902  724 mt  902  796 L
+1035  760 mt 1107  760 L
+1071  724 mt 1071  796 L
+1204  760 mt 1276  760 L
+1240  724 mt 1240  796 L
+1373  954 mt 1445  954 L
+1409  918 mt 1409  990 L
+gr
+
+gs 733 372 677 583 rc
+gr
+
+0 sg
+ 942 1242 mt 
+(N =1) s
+-340  277 mt 
+(Random init. synthetic data noise 0.0251 pendulumm) s
+ 550 1168 mt  -90 rotate
+(Prior concentration) s
+90 rotate
+ 716  997 mt 
+( ) s
+1393  414 mt 
+( ) s
+1 sg
+0 334 950 0 0 -334 400 766 4 MP
+PP
+-950 0 0 334 950 0 0 -334 400 766 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+ 400  766 mt 1350  766 L
+ 400  432 mt 1350  432 L
+ 400  766 mt  400  432 L
+1350  766 mt 1350  432 L
+ 400  766 mt 1350  766 L
+ 400  766 mt  400  432 L
+ 400  766 mt 1350  766 L
+ 400  432 mt 1350  432 L
+ 400  766 mt  400  432 L
+1350  766 mt 1350  432 L
+ 861  567 mt 
+(Learned) s
+gs 400 432 951 335 rc
+c8
+355 0 470 524 2 MP stroke
+gs 575 451 147 147 rc
+ 612  524 mt  684  524 L
+ 648  488 mt  648  560 L
+ 623  499 mt  673  549 L
+ 673  499 mt  623  549 L
+gr
+
+gr
+
+c8
+0 sg
+ 861  716 mt 
+(True) s
+gs 400 432 951 335 rc
+c9
+355 0 470 673 2 MP stroke
+gs 575 600 147 147 rc
+ 612  673 mt  684  673 L
+ 648  637 mt  648  709 L
+gr
+
+gr
+
+c9
+1 sg
+0 582 675 0 0 -582 1747 954 4 MP
+PP
+-675 0 0 582 675 0 0 -582 1747 954 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+1747  954 mt 2422  954 L
+1747  372 mt 2422  372 L
+1747  954 mt 1747  372 L
+2422  954 mt 2422  372 L
+1747  954 mt 2422  954 L
+1747  954 mt 1747  372 L
+1747  954 mt 1747  947 L
+1747  372 mt 1747  378 L
+1714 1099 mt 
+(0) s
+2084  954 mt 2084  947 L
+2084  372 mt 2084  378 L
+2051 1099 mt 
+(2) s
+2422  954 mt 2422  947 L
+2422  372 mt 2422  378 L
+2389 1099 mt 
+(4) s
+1747  954 mt 1753  954 L
+2422  954 mt 2415  954 L
+1646  998 mt 
+(0) s
+1747  663 mt 1753  663 L
+2422  663 mt 2415  663 L
+1646  707 mt 
+(1) s
+1747  372 mt 1753  372 L
+2422  372 mt 2415  372 L
+1646  416 mt 
+(2) s
+1747  954 mt 2422  954 L
+1747  372 mt 2422  372 L
+1747  954 mt 1747  372 L
+2422  954 mt 2422  372 L
+gs 1747 372 676 583 rc
+c8
+169 0 169 402 169 125 1915 427 4 MP stroke
+gr
+
+c8
+gs 1842 354 654 674 rc
+1879  427 mt 1951  427 L
+1915  391 mt 1915  463 L
+2048  552 mt 2120  552 L
+2084  516 mt 2084  588 L
+2217  954 mt 2289  954 L
+2253  918 mt 2253  990 L
+2386  954 mt 2458  954 L
+2422  918 mt 2422  990 L
+1890  402 mt 1940  452 L
+1940  402 mt 1890  452 L
+2059  527 mt 2109  577 L
+2109  527 mt 2059  577 L
+2228  929 mt 2278  979 L
+2278  929 mt 2228  979 L
+2397  929 mt 2447  979 L
+2447  929 mt 2397  979 L
+gr
+
+gs 1747 372 676 583 rc
+c9
+169 291 169 0 169 0 1915 663 4 MP stroke
+gr
+
+c9
+gs 1842 590 654 438 rc
+1879  663 mt 1951  663 L
+1915  627 mt 1915  699 L
+2048  663 mt 2120  663 L
+2084  627 mt 2084  699 L
+2217  663 mt 2289  663 L
+2253  627 mt 2253  699 L
+2386  954 mt 2458  954 L
+2422  918 mt 2422  990 L
+gr
+
+gs 1747 372 676 583 rc
+gr
+
+0 sg
+1955 1242 mt 
+(N =2) s
+ 674  277 mt 
+(Random init. synthetic data noise 0.0251 pendulumm) s
+1564 1168 mt  -90 rotate
+(Prior concentration) s
+90 rotate
+1730  997 mt 
+( ) s
+2406  414 mt 
+( ) s
+1 sg
+0 334 949 0 0 -334 1414 766 4 MP
+PP
+-949 0 0 334 949 0 0 -334 1414 766 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+1414  766 mt 2363  766 L
+1414  432 mt 2363  432 L
+1414  766 mt 1414  432 L
+2363  766 mt 2363  432 L
+1414  766 mt 2363  766 L
+1414  766 mt 1414  432 L
+1414  766 mt 2363  766 L
+1414  432 mt 2363  432 L
+1414  766 mt 1414  432 L
+2363  766 mt 2363  432 L
+1875  567 mt 
+(Learned) s
+gs 1414 432 950 335 rc
+c8
+354 0 1484 524 2 MP stroke
+gs 1588 451 147 147 rc
+1625  524 mt 1697  524 L
+1661  488 mt 1661  560 L
+1636  499 mt 1686  549 L
+1686  499 mt 1636  549 L
+gr
+
+gr
+
+c8
+0 sg
+1875  716 mt 
+(True) s
+gs 1414 432 950 335 rc
+c9
+354 0 1484 673 2 MP stroke
+gs 1588 600 147 147 rc
+1625  673 mt 1697  673 L
+1661  637 mt 1661  709 L
+gr
+
+gr
+
+c9
+1 sg
+0 582 676 0 0 -582 2760 954 4 MP
+PP
+-676 0 0 582 676 0 0 -582 2760 954 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+2760  954 mt 3436  954 L
+2760  372 mt 3436  372 L
+2760  954 mt 2760  372 L
+3436  954 mt 3436  372 L
+2760  954 mt 3436  954 L
+2760  954 mt 2760  372 L
+2760  954 mt 2760  947 L
+2760  372 mt 2760  378 L
+2727 1099 mt 
+(0) s
+3098  954 mt 3098  947 L
+3098  372 mt 3098  378 L
+3065 1099 mt 
+(2) s
+3436  954 mt 3436  947 L
+3436  372 mt 3436  378 L
+3403 1099 mt 
+(4) s
+2760  954 mt 2766  954 L
+3436  954 mt 3429  954 L
+2659  998 mt 
+(0) s
+2760  663 mt 2766  663 L
+3436  663 mt 3429  663 L
+2659  707 mt 
+(1) s
+2760  372 mt 2766  372 L
+3436  372 mt 3429  372 L
+2659  416 mt 
+(2) s
+2760  954 mt 3436  954 L
+2760  372 mt 3436  372 L
+2760  954 mt 2760  372 L
+3436  954 mt 3436  372 L
+gs 2760 372 677 583 rc
+c8
+169 399 169 155 169 -425 2929 825 4 MP stroke
+gr
+
+c8
+gs 2856 327 654 701 rc
+2893  825 mt 2965  825 L
+2929  789 mt 2929  861 L
+3062  400 mt 3134  400 L
+3098  364 mt 3098  436 L
+3231  555 mt 3303  555 L
+3267  519 mt 3267  591 L
+3400  954 mt 3472  954 L
+3436  918 mt 3436  990 L
+2904  800 mt 2954  850 L
+2954  800 mt 2904  850 L
+3073  375 mt 3123  425 L
+3123  375 mt 3073  425 L
+3242  530 mt 3292  580 L
+3292  530 mt 3242  580 L
+3411  929 mt 3461  979 L
+3461  929 mt 3411  979 L
+gr
+
+gs 2760 372 677 583 rc
+c9
+169 291 169 0 169 0 2929 663 4 MP stroke
+gr
+
+c9
+gs 2856 590 654 438 rc
+2893  663 mt 2965  663 L
+2929  627 mt 2929  699 L
+3062  663 mt 3134  663 L
+3098  627 mt 3098  699 L
+3231  663 mt 3303  663 L
+3267  627 mt 3267  699 L
+3400  954 mt 3472  954 L
+3436  918 mt 3436  990 L
+gr
+
+gs 2760 372 677 583 rc
+gr
+
+0 sg
+2969 1242 mt 
+(N =3) s
+1687  277 mt 
+(Random init. synthetic data noise 0.0251 pendulumm) s
+2577 1168 mt  -90 rotate
+(Prior concentration) s
+90 rotate
+2743  997 mt 
+( ) s
+3420  414 mt 
+( ) s
+1 sg
+0 334 949 0 0 -334 2428 766 4 MP
+PP
+-949 0 0 334 949 0 0 -334 2428 766 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+2428  766 mt 3377  766 L
+2428  432 mt 3377  432 L
+2428  766 mt 2428  432 L
+3377  766 mt 3377  432 L
+2428  766 mt 3377  766 L
+2428  766 mt 2428  432 L
+2428  766 mt 3377  766 L
+2428  432 mt 3377  432 L
+2428  766 mt 2428  432 L
+3377  766 mt 3377  432 L
+2889  567 mt 
+(Learned) s
+gs 2428 432 950 335 rc
+c8
+354 0 2498 524 2 MP stroke
+gs 2602 451 147 147 rc
+2639  524 mt 2711  524 L
+2675  488 mt 2675  560 L
+2650  499 mt 2700  549 L
+2700  499 mt 2650  549 L
+gr
+
+gr
+
+c8
+0 sg
+2889  716 mt 
+(True) s
+gs 2428 432 950 335 rc
+c9
+354 0 2498 673 2 MP stroke
+gs 2602 600 147 147 rc
+2639  673 mt 2711  673 L
+2675  637 mt 2675  709 L
+gr
+
+gr
+
+c9
+1 sg
+0 582 676 0 0 -582 3773 954 4 MP
+PP
+-676 0 0 582 676 0 0 -582 3773 954 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+3773  954 mt 4449  954 L
+3773  372 mt 4449  372 L
+3773  954 mt 3773  372 L
+4449  954 mt 4449  372 L
+3773  954 mt 4449  954 L
+3773  954 mt 3773  372 L
+3773  954 mt 3773  947 L
+3773  372 mt 3773  378 L
+3740 1099 mt 
+(0) s
+4111  954 mt 4111  947 L
+4111  372 mt 4111  378 L
+4078 1099 mt 
+(2) s
+4449  954 mt 4449  947 L
+4449  372 mt 4449  378 L
+4416 1099 mt 
+(4) s
+3773  954 mt 3779  954 L
+4449  954 mt 4442  954 L
+3672  998 mt 
+(0) s
+3773  760 mt 3779  760 L
+4449  760 mt 4442  760 L
+3672  804 mt 
+(1) s
+3773  566 mt 3779  566 L
+4449  566 mt 4442  566 L
+3672  610 mt 
+(2) s
+3773  372 mt 3779  372 L
+4449  372 mt 4442  372 L
+3672  416 mt 
+(3) s
+3773  954 mt 4449  954 L
+3773  372 mt 4449  372 L
+3773  954 mt 3773  372 L
+4449  954 mt 4449  372 L
+gs 3773 372 677 583 rc
+c8
+169 129 169 -396 169 141 3942 812 4 MP stroke
+gr
+
+c8
+gs 3869 484 654 543 rc
+3906  812 mt 3978  812 L
+3942  776 mt 3942  848 L
+4075  953 mt 4147  953 L
+4111  917 mt 4111  989 L
+4244  557 mt 4316  557 L
+4280  521 mt 4280  593 L
+4413  686 mt 4485  686 L
+4449  650 mt 4449  722 L
+3917  787 mt 3967  837 L
+3967  787 mt 3917  837 L
+4086  928 mt 4136  978 L
+4136  928 mt 4086  978 L
+4255  532 mt 4305  582 L
+4305  532 mt 4255  582 L
+4424  661 mt 4474  711 L
+4474  661 mt 4424  711 L
+gr
+
+gs 3773 372 677 583 rc
+c9
+169 194 169 0 169 0 3942 760 4 MP stroke
+gr
+
+c9
+gs 3869 687 654 341 rc
+3906  760 mt 3978  760 L
+3942  724 mt 3942  796 L
+4075  760 mt 4147  760 L
+4111  724 mt 4111  796 L
+4244  760 mt 4316  760 L
+4280  724 mt 4280  796 L
+4413  954 mt 4485  954 L
+4449  918 mt 4449  990 L
+gr
+
+gs 3773 372 677 583 rc
+gr
+
+0 sg
+3982 1242 mt 
+(N =4) s
+2700  277 mt 
+(Random init. synthetic data noise 0.0251 pendulumm) s
+3590 1168 mt  -90 rotate
+(Prior concentration) s
+90 rotate
+3756  997 mt 
+( ) s
+4433  414 mt 
+( ) s
+1 sg
+0 334 950 0 0 -334 3440 766 4 MP
+PP
+-950 0 0 334 950 0 0 -334 3440 766 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+3440  766 mt 4390  766 L
+3440  432 mt 4390  432 L
+3440  766 mt 3440  432 L
+4390  766 mt 4390  432 L
+3440  766 mt 4390  766 L
+3440  766 mt 3440  432 L
+3440  766 mt 4390  766 L
+3440  432 mt 4390  432 L
+3440  766 mt 3440  432 L
+4390  766 mt 4390  432 L
+3901  567 mt 
+(Learned) s
+gs 3440 432 951 335 rc
+c8
+355 0 3510 524 2 MP stroke
+gs 3615 451 147 147 rc
+3652  524 mt 3724  524 L
+3688  488 mt 3688  560 L
+3663  499 mt 3713  549 L
+3713  499 mt 3663  549 L
+gr
+
+gr
+
+c8
+0 sg
+3901  716 mt 
+(True) s
+gs 3440 432 951 335 rc
+c9
+355 0 3510 673 2 MP stroke
+gs 3615 600 147 147 rc
+3652  673 mt 3724  673 L
+3688  637 mt 3688  709 L
+gr
+
+gr
+
+c9
+1 sg
+0 582 676 0 0 -582 733 2059 4 MP
+PP
+-676 0 0 582 676 0 0 -582 733 2059 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+ 733 2059 mt 1409 2059 L
+ 733 1477 mt 1409 1477 L
+ 733 2059 mt  733 1477 L
+1409 2059 mt 1409 1477 L
+ 733 2059 mt 1409 2059 L
+ 733 2059 mt  733 1477 L
+ 733 2059 mt  733 2052 L
+ 733 1477 mt  733 1483 L
+ 700 2204 mt 
+(0) s
+1071 2059 mt 1071 2052 L
+1071 1477 mt 1071 1483 L
+1038 2204 mt 
+(2) s
+1409 2059 mt 1409 2052 L
+1409 1477 mt 1409 1483 L
+1376 2204 mt 
+(4) s
+ 733 2059 mt  739 2059 L
+1409 2059 mt 1402 2059 L
+ 632 2103 mt 
+(0) s
+ 733 1865 mt  739 1865 L
+1409 1865 mt 1402 1865 L
+ 632 1909 mt 
+(1) s
+ 733 1671 mt  739 1671 L
+1409 1671 mt 1402 1671 L
+ 632 1715 mt 
+(2) s
+ 733 1477 mt  739 1477 L
+1409 1477 mt 1402 1477 L
+ 632 1521 mt 
+(3) s
+ 733 2059 mt 1409 2059 L
+ 733 1477 mt 1409 1477 L
+ 733 2059 mt  733 1477 L
+1409 2059 mt 1409 1477 L
+gs 733 1477 677 583 rc
+c8
+169 0 169 0 169 466 902 1593 4 MP stroke
+gr
+
+c8
+gs 829 1520 654 613 rc
+ 866 1593 mt  938 1593 L
+ 902 1557 mt  902 1629 L
+1035 2059 mt 1107 2059 L
+1071 2023 mt 1071 2095 L
+1204 2059 mt 1276 2059 L
+1240 2023 mt 1240 2095 L
+1373 2059 mt 1445 2059 L
+1409 2023 mt 1409 2095 L
+ 877 1568 mt  927 1618 L
+ 927 1568 mt  877 1618 L
+1046 2034 mt 1096 2084 L
+1096 2034 mt 1046 2084 L
+1215 2034 mt 1265 2084 L
+1265 2034 mt 1215 2084 L
+1384 2034 mt 1434 2084 L
+1434 2034 mt 1384 2084 L
+gr
+
+gs 733 1477 677 583 rc
+c9
+169 194 169 0 169 0 902 1865 4 MP stroke
+gr
+
+c9
+gs 829 1792 654 341 rc
+ 866 1865 mt  938 1865 L
+ 902 1829 mt  902 1901 L
+1035 1865 mt 1107 1865 L
+1071 1829 mt 1071 1901 L
+1204 1865 mt 1276 1865 L
+1240 1829 mt 1240 1901 L
+1373 2059 mt 1445 2059 L
+1409 2023 mt 1409 2095 L
+gr
+
+gs 733 1477 677 583 rc
+gr
+
+0 sg
+ 942 2347 mt 
+(N =1) s
+-340 1382 mt 
+(Random init. synthetic data noise 0.0252 pendulumm) s
+ 550 2273 mt  -90 rotate
+(Prior concentration) s
+90 rotate
+ 716 2102 mt 
+( ) s
+1393 1519 mt 
+( ) s
+1 sg
+0 334 950 0 0 -334 400 1871 4 MP
+PP
+-950 0 0 334 950 0 0 -334 400 1871 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+ 400 1871 mt 1350 1871 L
+ 400 1537 mt 1350 1537 L
+ 400 1871 mt  400 1537 L
+1350 1871 mt 1350 1537 L
+ 400 1871 mt 1350 1871 L
+ 400 1871 mt  400 1537 L
+ 400 1871 mt 1350 1871 L
+ 400 1537 mt 1350 1537 L
+ 400 1871 mt  400 1537 L
+1350 1871 mt 1350 1537 L
+ 861 1672 mt 
+(Learned) s
+gs 400 1537 951 335 rc
+c8
+355 0 470 1629 2 MP stroke
+gs 575 1556 147 147 rc
+ 612 1629 mt  684 1629 L
+ 648 1593 mt  648 1665 L
+ 623 1604 mt  673 1654 L
+ 673 1604 mt  623 1654 L
+gr
+
+gr
+
+c8
+0 sg
+ 861 1821 mt 
+(True) s
+gs 400 1537 951 335 rc
+c9
+355 0 470 1778 2 MP stroke
+gs 575 1705 147 147 rc
+ 612 1778 mt  684 1778 L
+ 648 1742 mt  648 1814 L
+gr
+
+gr
+
+c9
+1 sg
+0 582 675 0 0 -582 1747 2059 4 MP
+PP
+-675 0 0 582 675 0 0 -582 1747 2059 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+1747 2059 mt 2422 2059 L
+1747 1477 mt 2422 1477 L
+1747 2059 mt 1747 1477 L
+2422 2059 mt 2422 1477 L
+1747 2059 mt 2422 2059 L
+1747 2059 mt 1747 1477 L
+1747 2059 mt 1747 2052 L
+1747 1477 mt 1747 1483 L
+1714 2204 mt 
+(0) s
+2084 2059 mt 2084 2052 L
+2084 1477 mt 2084 1483 L
+2051 2204 mt 
+(2) s
+2422 2059 mt 2422 2052 L
+2422 1477 mt 2422 1483 L
+2389 2204 mt 
+(4) s
+1747 2059 mt 1753 2059 L
+2422 2059 mt 2415 2059 L
+1646 2103 mt 
+(0) s
+1747 1865 mt 1753 1865 L
+2422 1865 mt 2415 1865 L
+1646 1909 mt 
+(1) s
+1747 1671 mt 1753 1671 L
+2422 1671 mt 2415 1671 L
+1646 1715 mt 
+(2) s
+1747 1477 mt 1753 1477 L
+2422 1477 mt 2415 1477 L
+1646 1521 mt 
+(3) s
+1747 2059 mt 2422 2059 L
+1747 1477 mt 2422 1477 L
+1747 2059 mt 1747 1477 L
+2422 2059 mt 2422 1477 L
+gs 1747 1477 676 583 rc
+c8
+169 0 169 1 169 466 1915 1592 4 MP stroke
+gr
+
+c8
+gs 1842 1519 654 614 rc
+1879 1592 mt 1951 1592 L
+1915 1556 mt 1915 1628 L
+2048 2058 mt 2120 2058 L
+2084 2022 mt 2084 2094 L
+2217 2059 mt 2289 2059 L
+2253 2023 mt 2253 2095 L
+2386 2059 mt 2458 2059 L
+2422 2023 mt 2422 2095 L
+1890 1567 mt 1940 1617 L
+1940 1567 mt 1890 1617 L
+2059 2033 mt 2109 2083 L
+2109 2033 mt 2059 2083 L
+2228 2034 mt 2278 2084 L
+2278 2034 mt 2228 2084 L
+2397 2034 mt 2447 2084 L
+2447 2034 mt 2397 2084 L
+gr
+
+gs 1747 1477 676 583 rc
+c9
+169 194 169 0 169 0 1915 1865 4 MP stroke
+gr
+
+c9
+gs 1842 1792 654 341 rc
+1879 1865 mt 1951 1865 L
+1915 1829 mt 1915 1901 L
+2048 1865 mt 2120 1865 L
+2084 1829 mt 2084 1901 L
+2217 1865 mt 2289 1865 L
+2253 1829 mt 2253 1901 L
+2386 2059 mt 2458 2059 L
+2422 2023 mt 2422 2095 L
+gr
+
+gs 1747 1477 676 583 rc
+gr
+
+0 sg
+1955 2347 mt 
+(N =2) s
+ 674 1382 mt 
+(Random init. synthetic data noise 0.0252 pendulumm) s
+1564 2273 mt  -90 rotate
+(Prior concentration) s
+90 rotate
+1730 2102 mt 
+( ) s
+2406 1519 mt 
+( ) s
+1 sg
+0 334 949 0 0 -334 1414 1871 4 MP
+PP
+-949 0 0 334 949 0 0 -334 1414 1871 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+1414 1871 mt 2363 1871 L
+1414 1537 mt 2363 1537 L
+1414 1871 mt 1414 1537 L
+2363 1871 mt 2363 1537 L
+1414 1871 mt 2363 1871 L
+1414 1871 mt 1414 1537 L
+1414 1871 mt 2363 1871 L
+1414 1537 mt 2363 1537 L
+1414 1871 mt 1414 1537 L
+2363 1871 mt 2363 1537 L
+1875 1672 mt 
+(Learned) s
+gs 1414 1537 950 335 rc
+c8
+354 0 1484 1629 2 MP stroke
+gs 1588 1556 147 147 rc
+1625 1629 mt 1697 1629 L
+1661 1593 mt 1661 1665 L
+1636 1604 mt 1686 1654 L
+1686 1604 mt 1636 1654 L
+gr
+
+gr
+
+c8
+0 sg
+1875 1821 mt 
+(True) s
+gs 1414 1537 950 335 rc
+c9
+354 0 1484 1778 2 MP stroke
+gs 1588 1705 147 147 rc
+1625 1778 mt 1697 1778 L
+1661 1742 mt 1661 1814 L
+gr
+
+gr
+
+c9
+1 sg
+0 582 676 0 0 -582 2760 2059 4 MP
+PP
+-676 0 0 582 676 0 0 -582 2760 2059 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+2760 2059 mt 3436 2059 L
+2760 1477 mt 3436 1477 L
+2760 2059 mt 2760 1477 L
+3436 2059 mt 3436 1477 L
+2760 2059 mt 3436 2059 L
+2760 2059 mt 2760 1477 L
+2760 2059 mt 2760 2052 L
+2760 1477 mt 2760 1483 L
+2727 2204 mt 
+(0) s
+3098 2059 mt 3098 2052 L
+3098 1477 mt 3098 1483 L
+3065 2204 mt 
+(2) s
+3436 2059 mt 3436 2052 L
+3436 1477 mt 3436 1483 L
+3403 2204 mt 
+(4) s
+2760 2059 mt 2766 2059 L
+3436 2059 mt 3429 2059 L
+2659 2103 mt 
+(0) s
+2760 1865 mt 2766 1865 L
+3436 1865 mt 3429 1865 L
+2659 1909 mt 
+(1) s
+2760 1671 mt 2766 1671 L
+3436 1671 mt 3429 1671 L
+2659 1715 mt 
+(2) s
+2760 1477 mt 2766 1477 L
+3436 1477 mt 3429 1477 L
+2659 1521 mt 
+(3) s
+2760 2059 mt 3436 2059 L
+2760 1477 mt 3436 1477 L
+2760 2059 mt 2760 1477 L
+3436 2059 mt 3436 1477 L
+gs 2760 1477 677 583 rc
+c8
+169 114 169 211 169 68 2929 1666 4 MP stroke
+gr
+
+c8
+gs 2856 1593 654 540 rc
+2893 1666 mt 2965 1666 L
+2929 1630 mt 2929 1702 L
+3062 1734 mt 3134 1734 L
+3098 1698 mt 3098 1770 L
+3231 1945 mt 3303 1945 L
+3267 1909 mt 3267 1981 L
+3400 2059 mt 3472 2059 L
+3436 2023 mt 3436 2095 L
+2904 1641 mt 2954 1691 L
+2954 1641 mt 2904 1691 L
+3073 1709 mt 3123 1759 L
+3123 1709 mt 3073 1759 L
+3242 1920 mt 3292 1970 L
+3292 1920 mt 3242 1970 L
+3411 2034 mt 3461 2084 L
+3461 2034 mt 3411 2084 L
+gr
+
+gs 2760 1477 677 583 rc
+c9
+169 194 169 0 169 0 2929 1865 4 MP stroke
+gr
+
+c9
+gs 2856 1792 654 341 rc
+2893 1865 mt 2965 1865 L
+2929 1829 mt 2929 1901 L
+3062 1865 mt 3134 1865 L
+3098 1829 mt 3098 1901 L
+3231 1865 mt 3303 1865 L
+3267 1829 mt 3267 1901 L
+3400 2059 mt 3472 2059 L
+3436 2023 mt 3436 2095 L
+gr
+
+gs 2760 1477 677 583 rc
+gr
+
+0 sg
+2969 2347 mt 
+(N =3) s
+1687 1382 mt 
+(Random init. synthetic data noise 0.0252 pendulumm) s
+2577 2273 mt  -90 rotate
+(Prior concentration) s
+90 rotate
+2743 2102 mt 
+( ) s
+3420 1519 mt 
+( ) s
+1 sg
+0 334 949 0 0 -334 2428 1871 4 MP
+PP
+-949 0 0 334 949 0 0 -334 2428 1871 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+2428 1871 mt 3377 1871 L
+2428 1537 mt 3377 1537 L
+2428 1871 mt 2428 1537 L
+3377 1871 mt 3377 1537 L
+2428 1871 mt 3377 1871 L
+2428 1871 mt 2428 1537 L
+2428 1871 mt 3377 1871 L
+2428 1537 mt 3377 1537 L
+2428 1871 mt 2428 1537 L
+3377 1871 mt 3377 1537 L
+2889 1672 mt 
+(Learned) s
+gs 2428 1537 950 335 rc
+c8
+354 0 2498 1629 2 MP stroke
+gs 2602 1556 147 147 rc
+2639 1629 mt 2711 1629 L
+2675 1593 mt 2675 1665 L
+2650 1604 mt 2700 1654 L
+2700 1604 mt 2650 1654 L
+gr
+
+gr
+
+c8
+0 sg
+2889 1821 mt 
+(True) s
+gs 2428 1537 950 335 rc
+c9
+354 0 2498 1778 2 MP stroke
+gs 2602 1705 147 147 rc
+2639 1778 mt 2711 1778 L
+2675 1742 mt 2675 1814 L
+gr
+
+gr
+
+c9
+1 sg
+0 582 676 0 0 -582 3773 2059 4 MP
+PP
+-676 0 0 582 676 0 0 -582 3773 2059 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+3773 2059 mt 4449 2059 L
+3773 1477 mt 4449 1477 L
+3773 2059 mt 3773 1477 L
+4449 2059 mt 4449 1477 L
+3773 2059 mt 4449 2059 L
+3773 2059 mt 3773 1477 L
+3773 2059 mt 3773 2052 L
+3773 1477 mt 3773 1483 L
+3740 2204 mt 
+(0) s
+4111 2059 mt 4111 2052 L
+4111 1477 mt 4111 1483 L
+4078 2204 mt 
+(2) s
+4449 2059 mt 4449 2052 L
+4449 1477 mt 4449 1483 L
+4416 2204 mt 
+(4) s
+3773 2059 mt 3779 2059 L
+4449 2059 mt 4442 2059 L
+3672 2103 mt 
+(0) s
+3773 1865 mt 3779 1865 L
+4449 1865 mt 4442 1865 L
+3672 1909 mt 
+(1) s
+3773 1671 mt 3779 1671 L
+4449 1671 mt 4442 1671 L
+3672 1715 mt 
+(2) s
+3773 1477 mt 3779 1477 L
+4449 1477 mt 4442 1477 L
+3672 1521 mt 
+(3) s
+3773 2059 mt 4449 2059 L
+3773 1477 mt 4449 1477 L
+3773 2059 mt 3773 1477 L
+4449 2059 mt 4449 1477 L
+gs 3773 1477 677 583 rc
+c8
+169 -255 169 380 169 -464 3942 2054 4 MP stroke
+gr
+
+c8
+gs 3869 1517 654 611 rc
+3906 2054 mt 3978 2054 L
+3942 2018 mt 3942 2090 L
+4075 1590 mt 4147 1590 L
+4111 1554 mt 4111 1626 L
+4244 1970 mt 4316 1970 L
+4280 1934 mt 4280 2006 L
+4413 1715 mt 4485 1715 L
+4449 1679 mt 4449 1751 L
+3917 2029 mt 3967 2079 L
+3967 2029 mt 3917 2079 L
+4086 1565 mt 4136 1615 L
+4136 1565 mt 4086 1615 L
+4255 1945 mt 4305 1995 L
+4305 1945 mt 4255 1995 L
+4424 1690 mt 4474 1740 L
+4474 1690 mt 4424 1740 L
+gr
+
+gs 3773 1477 677 583 rc
+c9
+169 194 169 0 169 0 3942 1865 4 MP stroke
+gr
+
+c9
+gs 3869 1792 654 341 rc
+3906 1865 mt 3978 1865 L
+3942 1829 mt 3942 1901 L
+4075 1865 mt 4147 1865 L
+4111 1829 mt 4111 1901 L
+4244 1865 mt 4316 1865 L
+4280 1829 mt 4280 1901 L
+4413 2059 mt 4485 2059 L
+4449 2023 mt 4449 2095 L
+gr
+
+gs 3773 1477 677 583 rc
+gr
+
+0 sg
+3982 2347 mt 
+(N =4) s
+2700 1382 mt 
+(Random init. synthetic data noise 0.0252 pendulumm) s
+3590 2273 mt  -90 rotate
+(Prior concentration) s
+90 rotate
+3756 2102 mt 
+( ) s
+4433 1519 mt 
+( ) s
+1 sg
+0 334 950 0 0 -334 3440 1871 4 MP
+PP
+-950 0 0 334 950 0 0 -334 3440 1871 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+3440 1871 mt 4390 1871 L
+3440 1537 mt 4390 1537 L
+3440 1871 mt 3440 1537 L
+4390 1871 mt 4390 1537 L
+3440 1871 mt 4390 1871 L
+3440 1871 mt 3440 1537 L
+3440 1871 mt 4390 1871 L
+3440 1537 mt 4390 1537 L
+3440 1871 mt 3440 1537 L
+4390 1871 mt 4390 1537 L
+3901 1672 mt 
+(Learned) s
+gs 3440 1537 951 335 rc
+c8
+355 0 3510 1629 2 MP stroke
+gs 3615 1556 147 147 rc
+3652 1629 mt 3724 1629 L
+3688 1593 mt 3688 1665 L
+3663 1604 mt 3713 1654 L
+3713 1604 mt 3663 1654 L
+gr
+
+gr
+
+c8
+0 sg
+3901 1821 mt 
+(True) s
+gs 3440 1537 951 335 rc
+c9
+355 0 3510 1778 2 MP stroke
+gs 3615 1705 147 147 rc
+3652 1778 mt 3724 1778 L
+3688 1742 mt 3688 1814 L
+gr
+
+gr
+
+c9
+1 sg
+0 582 676 0 0 -582 733 3164 4 MP
+PP
+-676 0 0 582 676 0 0 -582 733 3164 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+ 733 3164 mt 1409 3164 L
+ 733 2582 mt 1409 2582 L
+ 733 3164 mt  733 2582 L
+1409 3164 mt 1409 2582 L
+ 733 3164 mt 1409 3164 L
+ 733 3164 mt  733 2582 L
+ 733 3164 mt  733 3157 L
+ 733 2582 mt  733 2588 L
+ 700 3309 mt 
+(0) s
+1071 3164 mt 1071 3157 L
+1071 2582 mt 1071 2588 L
+1038 3309 mt 
+(2) s
+1409 3164 mt 1409 3157 L
+1409 2582 mt 1409 2588 L
+1376 3309 mt 
+(4) s
+ 733 3164 mt  739 3164 L
+1409 3164 mt 1402 3164 L
+ 632 3208 mt 
+(0) s
+ 733 2970 mt  739 2970 L
+1409 2970 mt 1402 2970 L
+ 632 3014 mt 
+(1) s
+ 733 2776 mt  739 2776 L
+1409 2776 mt 1402 2776 L
+ 632 2820 mt 
+(2) s
+ 733 2582 mt  739 2582 L
+1409 2582 mt 1402 2582 L
+ 632 2626 mt 
+(3) s
+ 733 3164 mt 1409 3164 L
+ 733 2582 mt 1409 2582 L
+ 733 3164 mt  733 2582 L
+1409 3164 mt 1409 2582 L
+gs 733 2582 677 583 rc
+c8
+169 0 169 0 169 518 902 2646 4 MP stroke
+gr
+
+c8
+gs 829 2573 654 665 rc
+ 866 2646 mt  938 2646 L
+ 902 2610 mt  902 2682 L
+1035 3164 mt 1107 3164 L
+1071 3128 mt 1071 3200 L
+1204 3164 mt 1276 3164 L
+1240 3128 mt 1240 3200 L
+1373 3164 mt 1445 3164 L
+1409 3128 mt 1409 3200 L
+ 877 2621 mt  927 2671 L
+ 927 2621 mt  877 2671 L
+1046 3139 mt 1096 3189 L
+1096 3139 mt 1046 3189 L
+1215 3139 mt 1265 3189 L
+1265 3139 mt 1215 3189 L
+1384 3139 mt 1434 3189 L
+1434 3139 mt 1384 3189 L
+gr
+
+gs 733 2582 677 583 rc
+c9
+169 194 169 0 169 0 902 2970 4 MP stroke
+gr
+
+c9
+gs 829 2897 654 341 rc
+ 866 2970 mt  938 2970 L
+ 902 2934 mt  902 3006 L
+1035 2970 mt 1107 2970 L
+1071 2934 mt 1071 3006 L
+1204 2970 mt 1276 2970 L
+1240 2934 mt 1240 3006 L
+1373 3164 mt 1445 3164 L
+1409 3128 mt 1409 3200 L
+gr
+
+gs 733 2582 677 583 rc
+gr
+
+0 sg
+ 942 3452 mt 
+(N =1) s
+-340 2487 mt 
+(Random init. synthetic data noise 0.0253 pendulumm) s
+ 550 3378 mt  -90 rotate
+(Prior concentration) s
+90 rotate
+ 716 3207 mt 
+( ) s
+1393 2624 mt 
+( ) s
+1 sg
+0 334 950 0 0 -334 400 2976 4 MP
+PP
+-950 0 0 334 950 0 0 -334 400 2976 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+ 400 2976 mt 1350 2976 L
+ 400 2642 mt 1350 2642 L
+ 400 2976 mt  400 2642 L
+1350 2976 mt 1350 2642 L
+ 400 2976 mt 1350 2976 L
+ 400 2976 mt  400 2642 L
+ 400 2976 mt 1350 2976 L
+ 400 2642 mt 1350 2642 L
+ 400 2976 mt  400 2642 L
+1350 2976 mt 1350 2642 L
+ 861 2777 mt 
+(Learned) s
+gs 400 2642 951 335 rc
+c8
+355 0 470 2734 2 MP stroke
+gs 575 2661 147 147 rc
+ 612 2734 mt  684 2734 L
+ 648 2698 mt  648 2770 L
+ 623 2709 mt  673 2759 L
+ 673 2709 mt  623 2759 L
+gr
+
+gr
+
+c8
+0 sg
+ 861 2926 mt 
+(True) s
+gs 400 2642 951 335 rc
+c9
+355 0 470 2883 2 MP stroke
+gs 575 2810 147 147 rc
+ 612 2883 mt  684 2883 L
+ 648 2847 mt  648 2919 L
+gr
+
+gr
+
+c9
+1 sg
+0 582 675 0 0 -582 1747 3164 4 MP
+PP
+-675 0 0 582 675 0 0 -582 1747 3164 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+1747 3164 mt 2422 3164 L
+1747 2582 mt 2422 2582 L
+1747 3164 mt 1747 2582 L
+2422 3164 mt 2422 2582 L
+1747 3164 mt 2422 3164 L
+1747 3164 mt 1747 2582 L
+1747 3164 mt 1747 3157 L
+1747 2582 mt 1747 2588 L
+1714 3309 mt 
+(0) s
+2084 3164 mt 2084 3157 L
+2084 2582 mt 2084 2588 L
+2051 3309 mt 
+(2) s
+2422 3164 mt 2422 3157 L
+2422 2582 mt 2422 2588 L
+2389 3309 mt 
+(4) s
+1747 3164 mt 1753 3164 L
+2422 3164 mt 2415 3164 L
+1646 3208 mt 
+(0) s
+1747 2970 mt 1753 2970 L
+2422 2970 mt 2415 2970 L
+1646 3014 mt 
+(1) s
+1747 2776 mt 1753 2776 L
+2422 2776 mt 2415 2776 L
+1646 2820 mt 
+(2) s
+1747 2582 mt 1753 2582 L
+2422 2582 mt 2415 2582 L
+1646 2626 mt 
+(3) s
+1747 3164 mt 2422 3164 L
+1747 2582 mt 2422 2582 L
+1747 3164 mt 1747 2582 L
+2422 3164 mt 2422 2582 L
+gs 1747 2582 676 583 rc
+c8
+169 0 169 350 169 104 1915 2710 4 MP stroke
+gr
+
+c8
+gs 1842 2637 654 601 rc
+1879 2710 mt 1951 2710 L
+1915 2674 mt 1915 2746 L
+2048 2814 mt 2120 2814 L
+2084 2778 mt 2084 2850 L
+2217 3164 mt 2289 3164 L
+2253 3128 mt 2253 3200 L
+2386 3164 mt 2458 3164 L
+2422 3128 mt 2422 3200 L
+1890 2685 mt 1940 2735 L
+1940 2685 mt 1890 2735 L
+2059 2789 mt 2109 2839 L
+2109 2789 mt 2059 2839 L
+2228 3139 mt 2278 3189 L
+2278 3139 mt 2228 3189 L
+2397 3139 mt 2447 3189 L
+2447 3139 mt 2397 3189 L
+gr
+
+gs 1747 2582 676 583 rc
+c9
+169 194 169 0 169 0 1915 2970 4 MP stroke
+gr
+
+c9
+gs 1842 2897 654 341 rc
+1879 2970 mt 1951 2970 L
+1915 2934 mt 1915 3006 L
+2048 2970 mt 2120 2970 L
+2084 2934 mt 2084 3006 L
+2217 2970 mt 2289 2970 L
+2253 2934 mt 2253 3006 L
+2386 3164 mt 2458 3164 L
+2422 3128 mt 2422 3200 L
+gr
+
+gs 1747 2582 676 583 rc
+gr
+
+0 sg
+1955 3452 mt 
+(N =2) s
+ 674 2487 mt 
+(Random init. synthetic data noise 0.0253 pendulumm) s
+1564 3378 mt  -90 rotate
+(Prior concentration) s
+90 rotate
+1730 3207 mt 
+( ) s
+2406 2624 mt 
+( ) s
+1 sg
+0 334 949 0 0 -334 1414 2976 4 MP
+PP
+-949 0 0 334 949 0 0 -334 1414 2976 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+1414 2976 mt 2363 2976 L
+1414 2642 mt 2363 2642 L
+1414 2976 mt 1414 2642 L
+2363 2976 mt 2363 2642 L
+1414 2976 mt 2363 2976 L
+1414 2976 mt 1414 2642 L
+1414 2976 mt 2363 2976 L
+1414 2642 mt 2363 2642 L
+1414 2976 mt 1414 2642 L
+2363 2976 mt 2363 2642 L
+1875 2777 mt 
+(Learned) s
+gs 1414 2642 950 335 rc
+c8
+354 0 1484 2734 2 MP stroke
+gs 1588 2661 147 147 rc
+1625 2734 mt 1697 2734 L
+1661 2698 mt 1661 2770 L
+1636 2709 mt 1686 2759 L
+1686 2709 mt 1636 2759 L
+gr
+
+gr
+
+c8
+0 sg
+1875 2926 mt 
+(True) s
+gs 1414 2642 950 335 rc
+c9
+354 0 1484 2883 2 MP stroke
+gs 1588 2810 147 147 rc
+1625 2883 mt 1697 2883 L
+1661 2847 mt 1661 2919 L
+gr
+
+gr
+
+c9
+1 sg
+0 582 676 0 0 -582 2760 3164 4 MP
+PP
+-676 0 0 582 676 0 0 -582 2760 3164 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+2760 3164 mt 3436 3164 L
+2760 2582 mt 3436 2582 L
+2760 3164 mt 2760 2582 L
+3436 3164 mt 3436 2582 L
+2760 3164 mt 3436 3164 L
+2760 3164 mt 2760 2582 L
+2760 3164 mt 2760 3157 L
+2760 2582 mt 2760 2588 L
+2727 3309 mt 
+(0) s
+3098 3164 mt 3098 3157 L
+3098 2582 mt 3098 2588 L
+3065 3309 mt 
+(2) s
+3436 3164 mt 3436 3157 L
+3436 2582 mt 3436 2588 L
+3403 3309 mt 
+(4) s
+2760 3164 mt 2766 3164 L
+3436 3164 mt 3429 3164 L
+2659 3208 mt 
+(0) s
+2760 2970 mt 2766 2970 L
+3436 2970 mt 3429 2970 L
+2659 3014 mt 
+(1) s
+2760 2776 mt 2766 2776 L
+3436 2776 mt 3429 2776 L
+2659 2820 mt 
+(2) s
+2760 2582 mt 2766 2582 L
+3436 2582 mt 3429 2582 L
+2659 2626 mt 
+(3) s
+2760 3164 mt 3436 3164 L
+2760 2582 mt 3436 2582 L
+2760 3164 mt 2760 2582 L
+3436 3164 mt 3436 2582 L
+gs 2760 2582 677 583 rc
+c8
+169 89 169 410 169 40 2929 2625 4 MP stroke
+gr
+
+c8
+gs 2856 2552 654 686 rc
+2893 2625 mt 2965 2625 L
+2929 2589 mt 2929 2661 L
+3062 2665 mt 3134 2665 L
+3098 2629 mt 3098 2701 L
+3231 3075 mt 3303 3075 L
+3267 3039 mt 3267 3111 L
+3400 3164 mt 3472 3164 L
+3436 3128 mt 3436 3200 L
+2904 2600 mt 2954 2650 L
+2954 2600 mt 2904 2650 L
+3073 2640 mt 3123 2690 L
+3123 2640 mt 3073 2690 L
+3242 3050 mt 3292 3100 L
+3292 3050 mt 3242 3100 L
+3411 3139 mt 3461 3189 L
+3461 3139 mt 3411 3189 L
+gr
+
+gs 2760 2582 677 583 rc
+c9
+169 194 169 0 169 0 2929 2970 4 MP stroke
+gr
+
+c9
+gs 2856 2897 654 341 rc
+2893 2970 mt 2965 2970 L
+2929 2934 mt 2929 3006 L
+3062 2970 mt 3134 2970 L
+3098 2934 mt 3098 3006 L
+3231 2970 mt 3303 2970 L
+3267 2934 mt 3267 3006 L
+3400 3164 mt 3472 3164 L
+3436 3128 mt 3436 3200 L
+gr
+
+gs 2760 2582 677 583 rc
+gr
+
+0 sg
+2969 3452 mt 
+(N =3) s
+1687 2487 mt 
+(Random init. synthetic data noise 0.0253 pendulumm) s
+2577 3378 mt  -90 rotate
+(Prior concentration) s
+90 rotate
+2743 3207 mt 
+( ) s
+3420 2624 mt 
+( ) s
+1 sg
+0 334 949 0 0 -334 2428 2976 4 MP
+PP
+-949 0 0 334 949 0 0 -334 2428 2976 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+2428 2976 mt 3377 2976 L
+2428 2642 mt 3377 2642 L
+2428 2976 mt 2428 2642 L
+3377 2976 mt 3377 2642 L
+2428 2976 mt 3377 2976 L
+2428 2976 mt 2428 2642 L
+2428 2976 mt 3377 2976 L
+2428 2642 mt 3377 2642 L
+2428 2976 mt 2428 2642 L
+3377 2976 mt 3377 2642 L
+2889 2777 mt 
+(Learned) s
+gs 2428 2642 950 335 rc
+c8
+354 0 2498 2734 2 MP stroke
+gs 2602 2661 147 147 rc
+2639 2734 mt 2711 2734 L
+2675 2698 mt 2675 2770 L
+2650 2709 mt 2700 2759 L
+2700 2709 mt 2650 2759 L
+gr
+
+gr
+
+c8
+0 sg
+2889 2926 mt 
+(True) s
+gs 2428 2642 950 335 rc
+c9
+354 0 2498 2883 2 MP stroke
+gs 2602 2810 147 147 rc
+2639 2883 mt 2711 2883 L
+2675 2847 mt 2675 2919 L
+gr
+
+gr
+
+c9
+1 sg
+0 582 676 0 0 -582 3773 3164 4 MP
+PP
+-676 0 0 582 676 0 0 -582 3773 3164 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+3773 3164 mt 4449 3164 L
+3773 2582 mt 4449 2582 L
+3773 3164 mt 3773 2582 L
+4449 3164 mt 4449 2582 L
+3773 3164 mt 4449 3164 L
+3773 3164 mt 3773 2582 L
+3773 3164 mt 3773 3157 L
+3773 2582 mt 3773 2588 L
+3740 3309 mt 
+(0) s
+4111 3164 mt 4111 3157 L
+4111 2582 mt 4111 2588 L
+4078 3309 mt 
+(2) s
+4449 3164 mt 4449 3157 L
+4449 2582 mt 4449 2588 L
+4416 3309 mt 
+(4) s
+3773 3164 mt 3779 3164 L
+4449 3164 mt 4442 3164 L
+3672 3208 mt 
+(0) s
+3773 2873 mt 3779 2873 L
+4449 2873 mt 4442 2873 L
+3672 2917 mt 
+(2) s
+3773 2582 mt 3779 2582 L
+4449 2582 mt 4442 2582 L
+3672 2626 mt 
+(4) s
+3773 3164 mt 4449 3164 L
+3773 2582 mt 4449 2582 L
+3773 3164 mt 3773 2582 L
+4449 3164 mt 4449 2582 L
+gs 3773 2582 677 583 rc
+c8
+169 -156 169 -62 169 -236 3942 3127 4 MP stroke
+gr
+
+c8
+gs 3869 2600 654 601 rc
+3906 3127 mt 3978 3127 L
+3942 3091 mt 3942 3163 L
+4075 2891 mt 4147 2891 L
+4111 2855 mt 4111 2927 L
+4244 2829 mt 4316 2829 L
+4280 2793 mt 4280 2865 L
+4413 2673 mt 4485 2673 L
+4449 2637 mt 4449 2709 L
+3917 3102 mt 3967 3152 L
+3967 3102 mt 3917 3152 L
+4086 2866 mt 4136 2916 L
+4136 2866 mt 4086 2916 L
+4255 2804 mt 4305 2854 L
+4305 2804 mt 4255 2854 L
+4424 2648 mt 4474 2698 L
+4474 2648 mt 4424 2698 L
+gr
+
+gs 3773 2582 677 583 rc
+c9
+169 146 169 0 169 0 3942 3018 4 MP stroke
+gr
+
+c9
+gs 3869 2945 654 293 rc
+3906 3018 mt 3978 3018 L
+3942 2982 mt 3942 3054 L
+4075 3018 mt 4147 3018 L
+4111 2982 mt 4111 3054 L
+4244 3018 mt 4316 3018 L
+4280 2982 mt 4280 3054 L
+4413 3164 mt 4485 3164 L
+4449 3128 mt 4449 3200 L
+gr
+
+gs 3773 2582 677 583 rc
+gr
+
+0 sg
+3982 3452 mt 
+(N =4) s
+2700 2487 mt 
+(Random init. synthetic data noise 0.0253 pendulumm) s
+3590 3378 mt  -90 rotate
+(Prior concentration) s
+90 rotate
+3756 3207 mt 
+( ) s
+4433 2624 mt 
+( ) s
+1 sg
+0 334 950 0 0 -334 3440 2976 4 MP
+PP
+-950 0 0 334 950 0 0 -334 3440 2976 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+3440 2976 mt 4390 2976 L
+3440 2642 mt 4390 2642 L
+3440 2976 mt 3440 2642 L
+4390 2976 mt 4390 2642 L
+3440 2976 mt 4390 2976 L
+3440 2976 mt 3440 2642 L
+3440 2976 mt 4390 2976 L
+3440 2642 mt 4390 2642 L
+3440 2976 mt 3440 2642 L
+4390 2976 mt 4390 2642 L
+3901 2777 mt 
+(Learned) s
+gs 3440 2642 951 335 rc
+c8
+355 0 3510 2734 2 MP stroke
+gs 3615 2661 147 147 rc
+3652 2734 mt 3724 2734 L
+3688 2698 mt 3688 2770 L
+3663 2709 mt 3713 2759 L
+3713 2709 mt 3663 2759 L
+gr
+
+gr
+
+c8
+0 sg
+3901 2926 mt 
+(True) s
+gs 3440 2642 951 335 rc
+c9
+355 0 3510 2883 2 MP stroke
+gs 3615 2810 147 147 rc
+3652 2883 mt 3724 2883 L
+3688 2847 mt 3688 2919 L
+gr
+
+gr
+
+c9
+
+end %%Color Dict
+
+eplot
+%%EndObject
+
+epage
+end
+
+showpage
+
+%%Trailer
+%%EOF
