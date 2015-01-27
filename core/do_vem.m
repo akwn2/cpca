@@ -1,104 +1,68 @@
-function [u, v, A, B, lambda2_y, run_stats] = do_vem(y, u, v, A, B, lambda2_y, k1, k2, m1, m2, y_held)
+function [u, A, B, c, lambda2_y, run_stats] = do_vem(y, u, A, B, c, lambda2_y, k1, k2, m1, m2, y_held)
 %DO_VEM Perform variational Expectation-Maximization on the CPCA model
 %   Detailed explanation goes here
-    converged = false;
-    iter = 0;
-    disp('Initializing run...')
     
-    [m_dim, n_dim] = size(A);
-    d_pts = size(y, 2);
+    % Main options
+    fprintf('-----------------------------------------------\n');
+    fprintf('Running variational EM algorithm for CPCA model\n');
+    fprintf('-----------------------------------------------\n');
+    eStepPasses = 5;
+    rtol = 1.E-4;
+    fq = -1E100;
     
-    % Fix if no validation set given
-    if nargin < 11
-        % hold 20% of the data
-        d_held = fix(.2 * d_pts);
-        indexes = randperm(d_pts);
-        y_held = y(:, indexes(1:d_held));
-        
-        % Fix all the indexing
-        y = y(:, indexes(d_held:end));
-        k1 = k1(:, indexes(d_held:end));
-        k2 = k2(:, indexes(d_held:end));
-        m1 = m1(:, indexes(d_held:end));
-        m2 = m2(:, indexes(d_held:end));
-        
-        % Fix the dimension
-        d_pts = size(y, 2);
-    else
-        d_held = size(y_held, 2);
-    end
-        
-    old_model_pars = pack_model_pars(u, v, A, B, lambda2_y);
+    % Dimension of a single data point, hidden space and number of points
+    [M, D] = size(A);
+    N = size(y, 2);
     
-    mf_pars = pack_mf_pars(k1, k2, m1, m2);
+    % Priming variables
+    fprintf('Priming variables\n');
+    model = pack_model(u, A, B, c, lambda2_y);
+    mf = pack_mf(k1, k2, m1, m2);
+    [mc, ms, mc2, ms2, msc] = update_trig(mf);
+    pars = pack_pars(y, mc, ms, mc2, ms2, msc, D, M, N);
+    fq = get_model_free_energy(model, pars, mf, fq);
+    score = get_denoising_error(model, pars, y_held);
     
-    [mc, ms, mc_sq, ms_sq, msc] = update_trig(mf_pars);
     
-    pars = pack_pars(y, mc, ms, mc_sq, ms_sq, msc, n_dim, m_dim, d_pts);
-    
-    fq = get_model_free_energy(old_model_pars, pars, mf_pars);
-    
-    score = get_validation_error(old_model_pars, pars, y_held, d_held);
-    
-    disp('Main algorithm')
+    % Main EM steps
+    fprintf('Main algorithm\n');
     tic;
-    hist_fq(1) = fq;
-    hist_score(1) = score;
-    hist_iter(1) = 0;
-    hist_model_pars{1} = pack_to_var_array(u, v, A, B, lambda2_y);
+    iter = 1;
+    converged = false;
     while ~converged
-        iter = iter + 1;
-        disp(['Iteration: ', num2str(iter)]);
+        fprintf('\tIteration: %d\n', iter);
         
-        % Main steps
-        fprintf('\nE-step\n')
-        [pars, mf_pars] = do_e_step(old_model_pars, pars, mf_pars, fq);
+        fprintf('\tE-step\n')
+        [pars, mf, fq] = do_e_step(model, pars,...
+                                   mf, fq, eStepPasses, true);
         
-        fprintf('\nM-step\n')
-        model_pars = do_m_step(old_model_pars, pars, 30);
+        fprintf('\tM-step\n')
+        old_model = model;
+        model = do_m_step(old_model, pars, 30);
         
-        fprintf('\nFree energy\n')
-        fq_old = fq;
-        fq = get_model_free_energy(model_pars, pars, mf_pars);
+        fprintf('\tFree energy\n')
+        [fq, fq_old] = get_model_free_energy(model, pars, mf, fq);
         
-        fprintf('\nValidation error\n')
+        fprintf('\tPredict (do a denoising)\n')
         score_old = score;
-        score = get_validation_error(model_pars, pars, y_held, d_held);
+        score = get_denoising_error(model, pars, y_held);
         
-        % Iteration results
-        celldisp(model_pars)
+        % Display iteration results
+        celldisp(model)
         
-        % Overall convergence
-        check_free_energy_increase(fq, fq_old);
-        converged = check_convergence(model_pars, old_model_pars, fq, fq_old, score, score_old);
+        % Check convergence in the model parameters, free energy and
+        % prediction error
+        converged = check_convergence(rtol, model, old_model,...
+                                      fq, fq_old, score, score_old);
         
-        % Parameter iteration update
-        old_model_pars = model_pars;
-        hist_fq(iter + 1) = fq;
-        hist_score(iter + 1) = score;
-        hist_iter(iter + 1) = iter;
-        
-        [u, v, A, B, lambda2_y] = unpack_model_pars(model_pars);
-        hist_model_pars{iter + 1} = pack_to_var_array(u, v, A, B, lambda2_y);
-        
-%         if mod(iter, 5) == 0
-%             plot_within_iterations(model_pars, pars);
-%             keyboard;
-%         end
+        % Keep history of key quantities for later analysis
+        hist_fq(iter) = fq;
+        hist_denoise(iter) = score;
+        hist_model{iter} = model;
+        iter = iter + 1;
     end
+    
     elapsed_time = toc;
-    run_stats = {hist_fq, hist_iter, hist_score, hist_model_pars, elapsed_time};
-    
-%     % Output
-%     figure
-%     subplot(2,1,1)
-%     plot(hist_iter, hist_fq);
-%     title('Free energy by iteration');
-%     subplot(2,1,2)
-%     plot(hist_iter, hist_score);
-%     title('Reconstruction score by iteration');
-%     
-%     plot_within_iterations(model_pars, pars);
-    
-    [u, v, A, B, lambda2_y] = unpack_model_pars(model_pars);
+    run_stats = {hist_fq, hist_denoise, hist_model, elapsed_time};
+    [u, A, B, c, lambda2_y] = unpack_model(model);
 end

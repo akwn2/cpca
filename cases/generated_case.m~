@@ -1,0 +1,85 @@
+% generated_case.m
+%
+% In this script, we generate data from a model described by
+%
+%   p(theta) = von Mises(theta; k, m);
+%   p(y | theta) = Normal(y; A * cos(theta) + B * sin(theta) + C, s2 * I)
+%
+% The data corresponding to this generative model is created using the
+% function create_data located in the same folder.
+
+
+clear;  clc;
+N = 1000; % Number of data points to be created
+M = 4; % Number of dimensions of a single data point
+D = 2; % Number of dimensions of the hidden space
+noise = 0.01; % Noise level to be added to the data
+
+% Data creation step
+% Here we will keep the parameters to compare later on.
+[y, u_true, A_true, B_true, c_true, lambda2_y_true, y_held] = ...
+    create_data(N, M, D, noise);
+
+% Initialisation step
+% All initialisation procedures are functions that can be found in the
+% ../init folder. Here are some examples that may be uncommented as
+% desired,
+% [u_init, A_init, B_init, c_init, lambda2_y_init] = init_random(M, D);
+
+
+% We generate an initial guess for the mean field parameters from u
+k1 = repmat(u_init, [1, N]);
+k2 = small_rand(D, N);
+m1 = small_rand(D, N);
+m2 = small_rand(D, N);
+
+% Finally we run the code
+[u, A, B, c, lambda2_y, run_stats] = ...
+    do_vem(y, u_init, A_init, B_init, c_init, lambda2_y_init,...
+    k1, k2, m1, m2, y_held);
+       
+% Now, we plot the results
+% Plotting data (blue) and denoising data (red)
+figure
+plot(y(1:2:end,:), y(2:2:end,:),'bo')
+
+% Plot key quantities in the model (free energy and prediction error)
+figure
+subplot(2,1,1)
+% obtaining the evolution of the free energy, should go up
+fq_hist = run_stats{1}; 
+plot(fq_hist);
+ylabel('{F}_{q}');
+xlabel('Iterations');
+
+subplot(2,1,2)
+denoise = run_stats{2};
+% obtaining the evolution of the denoising score, should go down
+plot(denoise);
+ylabel('Prediction RMS');
+xlabel('Iterations');
+
+% Plot the color scale
+color_scale = [-1.5, 1.5];
+figure
+
+% plots for matrix A
+subplot(2,3,1)
+imagesc(A_true, color_scale)
+ylabel('True A (M X D)');
+subplot(2,3,2)
+imagesc(A_init, color_scale)
+ylabel('Initial A (M X D)');
+subplot(2,3,3)
+imagesc(A, color_scale)
+
+% plots for matrix B
+subplot(2,3,4)
+imagesc(A_true, color_scale)
+ylabel('True B (M X D)');
+subplot(2,3,5)
+imagesc(A_init, color_scale)
+ylabel('Initial B (M X D)');
+subplot(2,3,6)
+imagesc(A, color_scale)
+ylabel('Final B (M X D)');

@@ -1,43 +1,54 @@
-function [pars, mf_pars] = do_e_step(model_pars, pars, mf_pars, fq)
+function [pars, mf, fq] = do_e_step(model_pars, pars, ...
+                                         mf, fq, eStepPasses, checkFq)
 %DO_E_STEP E-step of the variational EM for CPCA
-%   Calculates E-step using the mean field appromodel_parsimation with GvMs
-    [u, v, A, B, lambda2_y] = unpack_model_pars(model_pars);
-    [y, mc, ms, ~, ~, ~, n_dim, m_dim, d_pts] = unpack_pars(pars);
+%   Calculates E-step using the mean field approximation with GvMs
+    [u, A, B, c, lambda2_y] = unpack_model(model_pars);
+    [y, mc, ms, ~, ~, ~, D, M, N] = unpack_pars(pars);
     
-    % random permtations
-    perm_hidden = randperm(n_dim);  
-    [k1, k2, m1, m2] = unpack_mf_pars(mf_pars);
-    for ii = 1:5
-        for nn = 1:n_dim
+    C = repmat(c, [M / 2, N]);
+    [k1, k2, m1, m2] = unpack_mf(mf);
+    
+    % We permute the order of the updates to avoid problems in this partial
+    % e-step.
+    perm_hidden = randperm(D);
+    
+    for ii = 1:eStepPasses
+        fprintf('\t\tE-step pass: %d of %d.\n', ii, eStepPasses);
+
+        for nn = 1:D
             kk = perm_hidden(nn);
 
-            rhs1 = u(kk) - lambda2_y * A(:, kk)' * ...
-                (- y + A(:, 1:n_dim ~= kk) * mc(1:n_dim ~= kk, :) + B(:, 1:n_dim ~= kk) * ms(1:n_dim ~= kk,:));
+            % Updates
+            rhs1 = u(kk) - 0.5 * lambda2_y * A(:, kk)' * ...
+                (2 * (C - y) + A(:, 1:D ~= kk) * mc(1:D ~= kk, :) +...
+                               B(:, 1:D ~= kk) * ms(1:D ~= kk,:));
 
-            rhs2 = v(kk) - lambda2_y * B(:, kk)' * ...
-                (- y + B(:, 1:n_dim ~= kk) * ms(1:n_dim ~= kk, :) + A(:, 1:n_dim ~= kk) * mc(1:n_dim ~= kk,:));
+            rhs2 = - 0.5 * lambda2_y * B(:, kk)' * ...
+                (2 * (C - y) + B(:, 1:D ~= kk) * ms(1:D ~= kk, :) +...
+                               A(:, 1:D ~= kk) * mc(1:D ~= kk,:));
 
-            rhs3 = - 0.25 * lambda2_y * (A(:, kk)' * A(:, kk) - B(:, kk)' * B(:, kk));
+            rhs3 = - 0.5 * lambda2_y * (A(:, kk)' * A(:, kk) - ...
+                                        B(:, kk)' * B(:, kk));
 
-            rhs4 = - 0.50 * lambda2_y * A(:, kk)' * B(:, kk);
+            rhs4 = - 0.5 * lambda2_y * A(:, kk)' * B(:, kk);
 
             % Calculate the mean-field parameters
-
             z1 = rhs1 + 1.0j * rhs2;
             z2 = rhs3 + 1.0j * rhs4;
-
             k1(kk, :) = abs(z1);
             k2(kk, :) = abs(z2);
             m1(kk, :) = angle(z1);
             m2(kk, :) = 0.5 * angle(z2);
 
-            mf_pars = pack_mf_pars(k1, k2, m1, m2);
-            [mc, ms, mc_sq, ms_sq, msc] = update_trig(mf_pars);
-            pars = pack_pars(y, mc, ms, mc_sq, ms_sq, msc, n_dim, m_dim, d_pts);
+            % Update moments
+            mf = pack_mf(k1, k2, m1, m2);
+            [mc, ms, mc_sq, ms_sq, msc] = update_trig(mf);
+            pars = pack_pars(y, mc, ms, mc_sq, ms_sq, msc, D, M, N);
 
-            fq_old = fq;
-            fq = get_model_free_energy(model_pars, pars, mf_pars);
-            check_free_energy_increase(fq, fq_old);
+            % Update free energy
+            if checkFq
+                fq = get_model_free_energy(model_pars, pars, mf, fq);
+            end
         end
     end
 end

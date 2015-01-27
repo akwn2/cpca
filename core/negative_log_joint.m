@@ -1,74 +1,60 @@
-function [log_p, dlog_p] = negative_log_joint(var_array, y, mc, ms, mc_sq, ms_sq, msc, n_dim, m_dim, d_pts)
+function [log_p, dlog_p] = negative_log_joint(vararray, y, mc, ms, mc2, ms2, msc, D, M, N)
 %NEGATIVE_LOG_JOINT Negative of the log-joint of for the M-step
 %   Negative log joint and gradients for the probabilistic model of CPCA
     
-    [u, v, A, B, log_lambda2_y] = unpack_from_var_array(var_array, n_dim, m_dim);
+    [u, A, B, c, log_lambda2_y] = unpack_array(vararray, D, M);
     
     % General pre-computable relations
+    C = repmat(c, [floor(M / 2), N]);
     lambda2_y = exp(log_lambda2_y);
-    k_prior = abs(u + 1.i * v);
-
-    U = repmat(u, [1, d_pts]);
-    V = repmat(v, [1, d_pts]);
-
-    YYT = y * y';
     
     ATA = A' * A;
     ATB = A' * B;
     BTB = B' * B;
     
-    sum_ccT = mc * mc' + diag(- diag(mc * mc') + sum(mc_sq, 2));
-    sum_scT = ms * mc' + diag(- diag(ms * mc') + sum(msc, 2));
-    sum_ssT = ms * ms' + diag(- diag(ms * ms') + sum(ms_sq, 2));
+    % Prior terms
+    prior = sum(u' * mc);
     
-    % Gradient of the average log joint calculation
-    log_p = d_pts * (n_dim - m_dim / 2.) * log(2. * pi) ... %               2 pi constant from prior and likelihood
-        - d_pts * sum(k_prior + log(besseli(0, k_prior, 1))) ... %          Prior normalizing constant
-        + trace(U' * mc) ... %                                              Prior "energy"
-        + trace(V' * ms) ... %                                              Prior "energy"
-        + 0.5 * d_pts * m_dim * log(lambda2_y) ... %                         Likelihood normalizing constant
-        - 0.5 * lambda2_y * (trace(YYT) ... %                                   sum_{m, d} y_{m,d} y_{m,d}
-                                - 2. * trace(mc' * A' * y) ... %                sum_{n, m, d} (mc_{d,n} A_{n,m}) y_{m,d}
-                                - 2. * trace(ms' * B' * y) ... %                sum_{n, m, d} (ms_{d,n} B_{n,m}) y_{m,d}
-                                + trace(ATA * sum_ccT) ... %                    sum_{n, m, d} (A_{n,m} A_{m,n}) (mc_{n,d} mc_{d,n})
-                                + 2 * trace(ATB * sum_scT) ... %                sum_{n, m, d} (A_{n,m} B_{m,n}) (ms_{n,d} mc_{d,n})
-                                + trace(BTB * sum_ssT)); %                      sum_{n, m, d} (B_{n,m} B_{m,n}) (ms_{n,d} ms_{d,n})
-    if isinf(log_p)
-        fprintf('Log_p is nan\n');
-        keyboard;
-    end
-    if isnan(log_p)
-        fprintf('Log_p is nan\n');
-        keyboard;
-    end
+    % Norm within the Liuelihood term
+    ccT = (mc * mc') + diag(- diag(mc * mc') + sum(mc2, 2));
+    scT = (ms * mc') + diag(- diag(ms * mc') + sum(msc, 2));
+    ssT = (ms * ms') + diag(- diag(ms * ms') + sum(ms2, 2));
+    
+    normTerm = trace((y - 2 * (A * mc + B * ms + C)) * y') ... % y terms
+            + trace(ATA * ccT + 2 * ATB * scT + BTB * ssT) + ... % <cos'A'Acos> + <cos'A'Bsin> + <sin'B'Bsin>
+            + trace((2 * (A * mc + B * ms) + C) * C');%        (A <cos> + B <sin> + C)' * C
+        
+    % Log joint calculation
+    log_p = N * (-sum(u + log(2 * pi * besseli(0, u, 1))) ...
+                   + M / 2 * log(lambda2_y / (2 * pi)))...
+            + prior - 0.5 * lambda2_y * normTerm;
+    
     log_p = -log_p;
     
     if nargout > 1
         
         % Prior Derivatives
-        du = sum(mc, 2) - d_pts * u ./ k_prior ...
-            .* besseli(1, k_prior, 1) ./ besseli(0, k_prior, 1);
-
-        dv = sum(ms, 2) - d_pts * v ./ k_prior ...
-            .* besseli(1, k_prior, 1) ./ besseli(0, k_prior, 1);
+        du = sum(mc, 2) - N .* besseli(1, u, 1) ./ besseli(0, u, 1);
 
         % Matrix derivatives
-        dA = lambda2_y * (y * mc' - A * sum_ccT - B * sum_scT);
+        dA = -lambda2_y * ((C - y) * mc' + A * ccT + B * scT);
+        dB = -lambda2_y * ((C - y) * ms' + B * ssT + A * scT');
         
-        dB = lambda2_y * (y * ms' - B * sum_ssT - A * sum_scT');
+        % Offset derivative
+        aux = -lambda2_y * sum(- y + A * mc + B * ms + C, 2);
+        
+        % shared c's for two-dimensional data
+        dc = zeros(size(c));
+        dc(1) = sum(aux(1:2:end));
+        dc(2) = sum(aux(2:2:end));
 
         % Precision Derivatives (used in chain rule)
-        dlambda2_y = + 0.5 * d_pts * m_dim / lambda2_y ...
-                     - 0.5 .* (trace(YYT) ...
-                                - 2. * trace(mc' * A' * y) ...
-                                - 2. * trace(ms' * B' * y) ...
-                                + trace(ATA * sum_ccT) ...
-                                + 2. * trace(ATB * sum_scT) ...
-                                + trace(BTB * sum_ssT));
+        dlambda2_y = + 0.5 * (N * M / lambda2_y - normTerm);
 
         % Chain rule to account for exponential
         dlog_lambda2_y = dlambda2_y * lambda2_y;
-                
-        dlog_p = -pack_to_var_array(du, dv, dA, dB, dlog_lambda2_y);
+        
+        dlog_p = cat(1, du, reshape(dA, [M * D, 1]), ...
+                    reshape(dB, [M * D, 1]), dc, dlog_lambda2_y);
     end
 end
