@@ -110,14 +110,18 @@ function [mom0, mom1, mom2] = get_gvm_moments(mf)
         
         theta = linspace(-pi, pi, Q);
         for ff = 1:F
-            gvm(ff, :) = exp(k1(ff) .* cos(theta - m2(ff)) + ...
-                             k2(ff) * cos(2 .* (theta - m2(ff))));
+            gvm(ff, :) = exp(k1(ff) .* cos(theta - m2(ff))) .* ...
+                         exp(-k1(ff)
+                         exp(k2(ff) * cos(2 .* (theta - m2(ff))) .*...
+                             - k1(ff) - k2(ff));
             samples(ff,:) = randsample(theta, S, true, gvm(ff, :));
         end
         
-        mom0(fix) = sum(cos(samples) + 1.j * sin(samples), 2);
-        mom1(fix) = sum(cos(samples) + 1.j * sin(samples), 2);
-        mom2(fix) = sum(cos(2 * samples) + 1.j * sin(2 * samples), 2);
+        mom0(fix) = sum(gvm, 2);
+        mom1(fix) = exp(-k1(fix) - k2(fix)) .* sum(cos(samples) + ...
+            1.j * sin(samples), 2) ./ S;
+        mom2(fix) = exp(-k1(fix) - k2(fix)) .* sum(cos(2* samples) + ...
+            1.j * sin(2 * samples), 2) ./ S;
     end
     
     % Reshape all objects to the appropriate size

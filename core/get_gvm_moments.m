@@ -106,19 +106,21 @@ function [mom0, mom1, mom2] = get_gvm_moments(mf)
         
         Q = 1E4; % number of bins
         S = 1E4; % number of samples we draw
+        gvm = zeros(F, Q); % probability of each bin
         samples = zeros(F, S); % samples container
         
         theta = linspace(-pi, pi, Q);
         for ff = 1:F
-            gvm(ff, :) = exp(k1(ff) .* cos(theta - m2(ff)) + ...
-                             k2(ff) * cos(2 .* (theta - m2(ff))) ...
-                             - k1(ff) - k2(ff));
+            gvm(ff, :) = exp(k1(ff) .* (cos(theta - m1(ff)) - 1) + ...
+                             k2(ff) .* (cos(2 .* (theta - m2(ff))) - 1));
             samples(ff,:) = randsample(theta, S, true, gvm(ff, :));
         end
         
-        mom0(fix) = sum(gvm, 2);
-        mom1(fix) = sum(cos(samples) + 1.j * sin(samples), 2);
-        mom2(fix) = sum(cos(2 * samples) + 1.j * sin(2 * samples), 2);
+        mom0(fix) = S .* exp(-k1(fix) - k2(fix));
+        mom1(fix) = sum(cos(samples) + 1.j * sin(samples), 2) .* ...
+            exp(-k1(fix) - k2(fix));
+        mom2(fix) = sum(cos(2 * samples) + 1.j * sin(2 * samples), 2) .*...
+            exp(-k1(fix) - k2(fix));
     end
     
     % Reshape all objects to the appropriate size
