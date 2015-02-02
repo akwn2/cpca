@@ -6,7 +6,8 @@ function [u, A, B, c, lambda2_y, run_stats] = do_vem(y, u, A, B, c, lambda2_y, k
     fprintf('-----------------------------------------------\n');
     fprintf('Running variational EM algorithm for CPCA model\n');
     fprintf('-----------------------------------------------\n');
-    eStepPasses = 5;
+    eStepPasses = 1;
+    max_iter = 20;
     rtol = 1.E-4;
     fq = -1E100;
     
@@ -29,7 +30,7 @@ function [u, A, B, c, lambda2_y, run_stats] = do_vem(y, u, A, B, c, lambda2_y, k
     tic;
     iter = 1;
     converged = false;
-    while ~converged
+    while ~converged && iter < max_iter
         fprintf('\tIteration: %d\n', iter);
         
         fprintf('\tE-step\n')
@@ -41,14 +42,15 @@ function [u, A, B, c, lambda2_y, run_stats] = do_vem(y, u, A, B, c, lambda2_y, k
         model = do_m_step(old_model, pars, 30);
         
         fprintf('\tFree energy\n')
-        [fq, fq_old] = get_model_free_energy(model, pars, mf, fq);
+        fq_old = fq;
+        [fq, h] = get_model_free_energy(model, pars, mf, fq);
         
-        fprintf('\tPredict (do a denoising)\n')
+        fprintf('\tPredict (do a denoising run)\n')
         score_old = score;
         score = get_denoising_error(model, pars, y_held);
         
         % Display iteration results
-        celldisp(model)
+%         celldisp(model)
         
         % Check convergence in the model parameters, free energy and
         % prediction error
@@ -57,9 +59,15 @@ function [u, A, B, c, lambda2_y, run_stats] = do_vem(y, u, A, B, c, lambda2_y, k
         
         % Keep history of key quantities for later analysis
         hist_fq(iter) = fq;
+        hist_h(iter) = h;
         hist_denoise(iter) = score;
         hist_model{iter} = model;
+        hist_mf{iter} = mf;
         iter = iter + 1;
+    end
+    
+    if iter == max_iter
+        fprintf('Maximum number of iterations reached!\n');
     end
     
     elapsed_time = toc;

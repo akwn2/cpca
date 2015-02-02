@@ -1,0 +1,1 @@
+function [log_p, dlog_p] = anneal_negative_log_joint();

@@ -54,7 +54,7 @@ function [log_p, dlog_p] = negative_log_joint(vararray, y, mc, ms, mc2, ms2, msc
         % Chain rule to account for exponential
         dlog_lambda2_y = dlambda2_y * lambda2_y;
         
-        dlog_p = cat(1, du, reshape(dA, [M * D, 1]), ...
+        dlog_p = -cat(1, du, reshape(dA, [M * D, 1]), ...
                     reshape(dB, [M * D, 1]), dc, dlog_lambda2_y);
     end
 end

@@ -10,10 +10,17 @@
 
 
 clear;  clc;
-N = 1000; % Number of data points to be created
+% Fix seed
+try
+    rng(0);
+catch
+    rand('seed', 0);
+    randn('seed', 0);
+end
+N = 100; % Number of data points to be created
 M = 4; % Number of dimensions of a single data point
 D = 2; % Number of dimensions of the hidden space
-noise = 0.1; % Noise level to be added to the data
+noise = 0.01; % Noise level to be added to the data
 
 % Data creation step
 % Here we will keep the parameters to compare later on.
@@ -25,11 +32,11 @@ noise = 0.1; % Noise level to be added to the data
 % ../init folder. Here are some examples that may be uncommented as
 % desired,
 % [u_init, A_init, B_init, c_init, lambda2_y_init] = init_random(M, D);
-% [u_init, A_init, B_init, c_init, lambda2_y_init] = ...
-%     init_true_values(M, D, noise);
-scale = 0.25;
 [u_init, A_init, B_init, c_init, lambda2_y_init] = ...
-    init_perturb(M, D, noise, scale);
+    init_true_values(M, D, noise);
+% scale = 0.25;
+% [u_init, A_init, B_init, c_init, lambda2_y_init] = ...
+%     init_perturb(M, D, noise, scale);
 
 % We generate an initial guess for the mean field parameters from u
 k1 = repmat(u_init, [1, N]);
@@ -46,7 +53,7 @@ m2 = rand(D, N);
 % Plotting data (blue) and denoising data (red)
 figure
 plot(y(1:2:end,:), y(2:2:end,:),'bo')
-hodl all
+hold all
 plot(y_held(1:2:end,:), y_held(2:2:end,:),'bo')
 
 % Plot key quantities in the model (free energy and prediction error)

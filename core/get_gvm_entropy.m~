@@ -15,6 +15,13 @@ function h = get_gvm_entropy(mf)
                + k2 .* (cos(2. * m2) .* mom2_re + ...
                         sin(2. * m2) .* mom2_im)) ./ mom0));
 
+    [D, N] = size(mom0);
+    H = size
+    for nn = 1:N
+        for dd = 1:D
+            h2(dd, nn) =
+        end
+    end
     if isnan(h)
         keyboard;
     end

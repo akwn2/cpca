@@ -15,19 +15,19 @@ function [pars, mf, fq] = do_e_step(model_pars, pars, ...
     for ii = 1:eStepPasses
         fprintf('\t\tE-step pass: %d of %d.\n', ii, eStepPasses);
 
-        for nn = 1:D
-            kk = perm_hidden(nn);
+        for dd = 1:D
+            kk = perm_hidden(dd);
 
             % Updates
             rhs1 = u(kk) - 0.5 * lambda2_y * A(:, kk)' * ...
-                (2 * (C - y) + A(:, 1:D ~= kk) * mc(1:D ~= kk, :) +...
-                               B(:, 1:D ~= kk) * ms(1:D ~= kk,:));
+                (2 * (C - y) + 2 * A(:, 1:D ~= kk) * mc(1:D ~= kk, :) +...
+                               2 * B(:, 1:D ~= kk) * ms(1:D ~= kk,:));
 
             rhs2 = - 0.5 * lambda2_y * B(:, kk)' * ...
-                (2 * (C - y) + B(:, 1:D ~= kk) * ms(1:D ~= kk, :) +...
-                               A(:, 1:D ~= kk) * mc(1:D ~= kk,:));
+                (2 * (C - y) + 2 * B(:, 1:D ~= kk) * ms(1:D ~= kk, :) +...
+                               2 * A(:, 1:D ~= kk) * mc(1:D ~= kk,:));
 
-            rhs3 = - 0.5 * lambda2_y * (A(:, kk)' * A(:, kk) - ...
+            rhs3 = - 0.25 * lambda2_y * (A(:, kk)' * A(:, kk) - ...
                                         B(:, kk)' * B(:, kk));
 
             rhs4 = - 0.5 * lambda2_y * A(:, kk)' * B(:, kk);
@@ -44,12 +44,11 @@ function [pars, mf, fq] = do_e_step(model_pars, pars, ...
             mf = pack_mf(k1, k2, m1, m2);
             [mc, ms, mc_sq, ms_sq, msc] = update_trig(mf);
             pars = pack_pars(y, mc, ms, mc_sq, ms_sq, msc, D, M, N);
-
-            % Update free energy
-            if checkFq
-                fq = get_model_free_energy(model_pars, pars, mf, fq);
-            end
         end
+    end
+    % Update free energy
+    if checkFq
+        fq = get_model_free_energy(model_pars, pars, mf, fq);
     end
 end
 
